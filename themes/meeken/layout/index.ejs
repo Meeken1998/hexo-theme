@@ -1,0 +1,40 @@
+<div class="image-wrapper">
+  <% site.posts.forEach(function(post, index){ %> <% if (post.cover) { %>
+  <!-- 图片 -->
+  <div
+    class="block-item image-item"
+    data-src="<%- post.cover %>"
+    data-idx="<%- index %>"
+    data-title="<%- post.title %>"
+    data-date="<%- post.date %>"
+  >
+    <img
+      src="<%- post.cover %>"
+      draggable="false"
+      alt="<%- post.title %>"
+      data-idx="<%- index %>"
+    />
+    <div class="title"><%- post.title %></div>
+  </div>
+
+  <% } else { %>
+  <!-- 文字 -->
+  <a href="<%- post.path %> ">
+    <div
+      class="block-item article-item"
+      data-src="<%- post.cover %>"
+      data-idx="<%- index %>"
+      data-title="<%- post.title %>"
+      data-date="<%- post.date %>"
+    >
+      <div class="content-title"><%- post.title %></div>
+      <% let time = `${new Date(post.date).getFullYear()}-${new
+      Date(post.date).getMonth() + 1 < 10 ? '0' + (new
+      Date(post.date).getMonth() + 1) : new Date(post.date).getMonth() +
+      1}-${new Date(post.date).getDate() + 1 < 10 ? '0' + (new
+      Date(post.date).getDate() + 1) : new Date(post.date).getDate() + 1}` %>
+      <div class="content-tag"><%- time %></div>
+    </div>
+  </a>
+  <% } %> %> <% }) %>
+</div>
